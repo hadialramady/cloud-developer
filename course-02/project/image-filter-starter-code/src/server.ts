@@ -41,14 +41,16 @@ import { isMainThread } from 'worker_threads';
 
   
 
-  app.get("/filteredimage", async (req:any , res:any) => {
+  app.get("/filteredimage", async (req:any , res:any) => 
+                                                          //validate the image_url query
+          { 
     let image_url :string = req.query.image_url.toString();
-    if (!image_url) {
+    if (!image_url) {                                       //call filterImageFromURL(image_url) to filter the image
       res.status(400).send("ooooops image is required :(");
     }
     const filteredpath :string = await filterImageFromURL(image_url);
-    res.status(200).sendFile(filteredpath,() => {
-      deleteLocalFiles([filteredpath]);
+    res.status(200).sendFile(filteredpath,() => {           //send the resulting file in the response
+      deleteLocalFiles([filteredpath]);                     //deletes any files on the server on finish of the response
     });
 
   });
