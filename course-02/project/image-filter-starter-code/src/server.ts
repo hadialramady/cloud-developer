@@ -29,18 +29,8 @@ import { isMainThread } from 'worker_threads';
   // RETURNS
   //   the filtered image file [!!TIP res.sendFile(filteredpath); might be useful]
 
-  /**************************************************************************** */
-
-
-
-
-
-
-
-
-
+  /****************************************************************************/
   
-
   app.get("/filteredimage", async (req:any , res:any) => 
                                                           //validate the image_url query
           { 
